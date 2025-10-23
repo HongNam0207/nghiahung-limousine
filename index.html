@@ -160,6 +160,78 @@ footer{background:#0b0b0b;color:#e5e7eb;padding:40px 0;margin-top:40px;font-size
   .cta{font-size:16px;padding:10px 16px}
   .logo span{font-size:15px}
 }
+  /* === Responsive & Visual Enhancement === */
+@media(max-width:768px){
+  header .nav {flex-direction: column; gap: 10px;}
+  .hero h1 {font-size:clamp(24px,6vw,34px);}
+  .hero p {font-size:15px;}
+  .route, .item, .why-item, .quote {padding:14px;}
+}
+
+/* Floating call-to-action button */
+.call-now {
+  position:fixed;
+  bottom:18px; right:18px;
+  background:linear-gradient(135deg,var(--brand),var(--brand-dark));
+  color:#fff;
+  padding:12px 18px;
+  border-radius:50px;
+  font-weight:600;
+  box-shadow:0 4px 12px rgba(0,0,0,.2);
+  z-index:999;
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+}
+
+/* Hero background overlay */
+.hero {
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg,#fffbe7,#fff);
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url('images/bg-car-blur.jpg') center/cover no-repeat;
+  opacity:.1;
+  filter:blur(4px);
+}
+
+/* Fade-in animation for sections */
+@keyframes fadeUp{
+  0%{opacity:0;transform:translateY(20px);}
+  100%{opacity:1;transform:translateY(0);}
+}
+.route, .item, .why-item, .quote{
+  animation:fadeUp .8s ease both;
+}
+.route:nth-child(1){animation-delay:.1s}
+.route:nth-child(2){animation-delay:.2s}
+.item:nth-child(2){animation-delay:.3s}
+
+/* CTA shine effect */
+.cta{
+  position:relative;
+  overflow:hidden;
+}
+.cta::after{
+  content:"";
+  position:absolute;
+  top:0;left:-75%;
+  width:50%;height:100%;
+  background:linear-gradient(120deg,rgba(255,255,255,.3) 0%,rgba(255,255,255,0) 80%);
+  transform:skewX(-25deg);
+  animation:shine 3s infinite;
+}
+@keyframes shine{
+  0%{left:-75%;}
+  100%{left:125%;}
+}
+
 </style>
 </head>
 
@@ -285,8 +357,11 @@ footer{background:#0b0b0b;color:#e5e7eb;padding:40px 0;margin-top:40px;font-size
     <div class="copyright">© 2025 Nghĩa Hưng Limousine</div>
   </div>
 </footer>
+  <a href="tel:0942638639" class="call-now">📞 Gọi đặt vé</a>
+
 </body>
 </html>
+
 
 
 
