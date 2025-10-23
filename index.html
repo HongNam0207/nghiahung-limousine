@@ -153,85 +153,85 @@ footer{background:#0b0b0b;color:#e5e7eb;padding:40px 0;margin-top:40px;font-size
 .foot a:hover{color:var(--brand)}
 .copyright{text-align:center;color:#9ca3af;font-size:14px;margin-top:12px}
 
-/* Responsive */
-@media(max-width:640px){
-  .menu{display:none}
-  .hero{padding:40px 14px}
-  .cta{font-size:16px;padding:10px 16px}
-  .logo span{font-size:15px}
-}
-  /* === Responsive & Visual Enhancement === */
-@media(max-width:768px){
-  header .nav {flex-direction: column; gap: 10px;}
-  .hero h1 {font-size:clamp(24px,6vw,34px);}
-  .hero p {font-size:15px;}
-  .route, .item, .why-item, .quote {padding:14px;}
-}
-
-/* Floating call-to-action button */
-.call-now {
-  position:fixed;
-  bottom:18px; right:18px;
-  background:linear-gradient(135deg,var(--brand),var(--brand-dark));
-  color:#fff;
-  padding:12px 18px;
-  border-radius:50px;
-  font-weight:600;
-  box-shadow:0 4px 12px rgba(0,0,0,.2);
-  z-index:999;
-  animation:float 3s ease-in-out infinite;
-}
-@keyframes float {
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-5px)}
+/* === Bottom Navigation (3 nút) === */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 0;
+  box-shadow: 0 -4px 12px rgba(0,0,0,.1);
+  border-top: 1px solid #e5e7eb;
+  z-index: 999;
 }
 
-/* Hero background overlay */
-.hero {
-  position:relative;
-  overflow:hidden;
-  background:linear-gradient(180deg,#fffbe7,#fff);
-}
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url('images/bg-car-blur.jpg') center/cover no-repeat;
-  opacity:.1;
-  filter:blur(4px);
+.bottom-nav .nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all .3s ease;
 }
 
-/* Fade-in animation for sections */
-@keyframes fadeUp{
-  0%{opacity:0;transform:translateY(20px);}
-  100%{opacity:1;transform:translateY(0);}
-}
-.route, .item, .why-item, .quote{
-  animation:fadeUp .8s ease both;
-}
-.route:nth-child(1){animation-delay:.1s}
-.route:nth-child(2){animation-delay:.2s}
-.item:nth-child(2){animation-delay:.3s}
-
-/* CTA shine effect */
-.cta{
-  position:relative;
-  overflow:hidden;
-}
-.cta::after{
-  content:"";
-  position:absolute;
-  top:0;left:-75%;
-  width:50%;height:100%;
-  background:linear-gradient(120deg,rgba(255,255,255,.3) 0%,rgba(255,255,255,0) 80%);
-  transform:skewX(-25deg);
-  animation:shine 3s infinite;
-}
-@keyframes shine{
-  0%{left:-75%;}
-  100%{left:125%;}
+.bottom-nav .nav-item .icon {
+  font-size: 22px;
+  line-height: 1;
+  margin-bottom: 4px;
+  transition: .3s;
 }
 
+/* Hover effect */
+.bottom-nav .nav-item:hover {
+  color: var(--brand-dark);
+  transform: translateY(-2px);
+}
+
+/* === Nút giữa nổi bật === */
+.bottom-nav .call-center {
+  position: relative;
+  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+  color: #fff;
+  border-radius: 50%;
+  padding: 14px;
+  margin-top: -28px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  animation: pulseCall 2.5s ease-in-out infinite;
+}
+
+.bottom-nav .call-center .icon {
+  font-size: 26px;
+  margin-bottom: 0;
+}
+
+.bottom-nav .call-center span {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  padding: 2px 8px;
+  font-size: 11px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+@keyframes pulseCall {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Ẩn trên desktop */
+@media(min-width:769px){
+  .bottom-nav{display:none;}
+}
 </style>
 </head>
 
@@ -358,32 +358,24 @@ footer{background:#0b0b0b;color:#e5e7eb;padding:40px 0;margin-top:40px;font-size
   </div>
 </footer>
 
-  <!-- Bottom Navigation -->
+<!-- Bottom Navigation -->
 <div class="bottom-nav">
-  <a href="https://facebook.com/hai.phung.5076" target="_blank">
+  <a href="https://facebook.com/hai.phung.5076" target="_blank" class="nav-item">
     <div class="icon">💬</div>
     <span>Chat FB</span>
   </a>
-  <a href="https://zalo.me/0942638639" target="_blank">
+
+  <a href="https://zalo.me/0942638639" target="_blank" class="nav-item">
     <div class="icon">💭</div>
     <span>Chat Zalo</span>
   </a>
-  
-  <a href="tel:0942638639" class="call-center">
-    <div class="icon">📞</div>
+
+  <a href="tel:0942638639" class="nav-item call-center">
+        <div class="icon">📞</div>
     <span>Gọi đặt xe</span>
   </a>
-  
 </div>
-
-  <a href="tel:0942638639" class="call-now">📞 Gọi đặt vé</a>
 
 </body>
 </html>
-
-
-
-
-
-
 
